@@ -1,0 +1,282 @@
+body {
+    margin: 0;
+    background: #F5F1EA;
+}
+/* ================= HERO ================= */
+.hero {
+    position: relative;
+    height: 92vh;
+    display: flex;
+    flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+.hero .bg_mark {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 560px;;
+    z-index: 0;
+}
+.hero *:not(.bg_mark):not(.tag) {
+    position: relative;
+    z-index: 1;
+}
+.hero .tag {
+    position: absolute;
+    top: -10px; right: 55px;
+    width: 10%;
+    z-index: 2;
+    transform: rotate(8deg);
+    transform-origin: top center;
+    filter: drop-shadow(0 8px 10px rgba(0,0,0,0.15));
+    animation: swing 3s ease-in-out infinite;
+}
+.hero .sub {
+    font-size: 1.75rem;
+    color: #333;
+    margin-bottom: 80px ;
+}
+.hero h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 12.50rem;
+    color: #A52725;
+    margin-top: 30px;
+}
+.hero .desc {
+    font-size: 2.00rem;
+    color: #333;
+    margin-top: 50px;
+    line-height: 1.8;
+}
+/* ================= nav ================= */
+nav {
+    border-top: 1px solid rgba(165, 39, 37, 0.5);
+    padding: 28px 0;
+}
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    list-style: none;
+    padding: 0; margin: 0;
+}
+nav ul li {}
+nav ul li .font {
+    color: #A52725;
+    text-decoration: none;
+    position: relative;
+    letter-spacing: 0.5px;
+}
+nav ul li .font::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0; height: 1px;
+    background: #A52725;
+    transition: width 0.4s ease;
+}
+nav ul li .font.active {color: #D0A09F;}
+nav ul li .font:hover::after {width: 100%;}
+
+@keyframes swing {
+    0% { transform: rotate(6deg); }
+    50% { transform: rotate(8deg); }
+    100% { transform: rotate(6deg); }
+}
+
+/* ================= 자기소개 ================= */
+#about {
+    min-height: 100vh;
+    padding: 0 120px;
+    background: #F5F1EA;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* ===== 헤더 ===== */
+#about .about_header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start;
+}
+#about .about_header .header_left  {
+    display: flex; 
+    flex-direction: column;
+}
+#about .about_header .header_left  .eng_title {
+    font-size: 2.25rem;
+    color: #A52725;
+    margin-bottom: 22px;
+}
+#about .about_header .header_left  .about_nav {
+    display: flex;
+    gap: 32px;
+    margin-top: 10px;
+}
+#about .about_header .header_left  .about_nav li {}
+#about .about_header .header_left  .about_nav li .font {
+    color: #D0A09F;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+#about .about_header .header_left  .about_nav li .font:hover {color: #A52725;}
+#about .about_header .header_left  .about_nav li .font::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0; height: 1px;
+    background: #A52725;
+    transition: width 0.3s ease;
+}
+#about .about_header .header_left  .about_nav li .font:hover::after {width: 100%;}
+#about .about_header .header_left  .about_nav li .font.active {color: #A52725}
+#about .about_header .header_right {
+    text-align: left;
+}
+#about .about_header .header_right p {
+    font-size: 2.00rem;
+    color: #333;
+    line-height: 1.8;
+}
+#about .about_header .header_right strong {font-weight: 600;}
+/* ===== 레이아웃 ===== */
+#about .about_wrap {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 300px;
+}
+/* ===== 프로필 ===== */
+#about .about_wrap .profile {text-align: center;}
+#about .about_wrap .profile img {
+    width: 250px;
+    border-radius: 120px;
+    margin: 0 auto 25px;
+}
+#about .about_wrap .profile .name_kr {
+    font-size: 2.00rem;
+    color: #111;
+    font-weight: 500;
+    letter-spacing: 6px;
+    margin-bottom: 8px;
+}
+#about .about_wrap .profile .eng_title {
+    font-size: 1.38rem;
+    color: #555;
+    margin-bottom: 12px;
+}
+#about .about_wrap .profile .info {
+    color: #555;
+    line-height: 1.6;
+    margin: 2px 0;
+}
+#about .about_wrap .profile .info:nth-of-type(1) {margin-top: 10px;}
+#about .about_wrap .profile .info:nth-of-type(2) {margin-top: 8px;}
+#about .about_wrap .profile .info:nth-of-type(3) {margin-top: 8px;}
+#about .about_wrap .profile .keywords {
+    margin-top: 30px;
+}
+#about .about_wrap .profile .keywords .eng_title {
+    font-size: 1.38rem;
+    color: #333;
+    margin-bottom: 12px;
+}
+#about .about_wrap .profile .keywords span {
+    display: inline-block;
+    margin: 4px 8px;
+    color: #555;
+}
+#about .about_wrap .profile .keywords span:nth-child(-n+2) {display: inline-block;}
+#about .about_wrap .profile .keywords span:nth-child(n+3) {display: inline-block;}
+/* ===== 오른쪽 ===== */
+#about .about_wrap .about_content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 10px;
+}
+/* ===== 섹션 ===== */
+#about .about_wrap .about_content .section_block {
+    margin-bottom: 50px;
+}
+#about .about_wrap .about_content .section_block .eng_title {
+    font-size: 1.38rem;
+    color: #333;
+    margin-bottom: 22px;
+}
+#about .about_wrap .about_content .section_block p {
+    color: #555;
+    margin-bottom: 22px;
+}
+#about .about_wrap .about_content .section_block ul {
+    padding-left: 15px;
+    margin-top: 10px;
+}
+#about .about_wrap .about_content .section_block ul li {
+    list-style: disc;
+    margin-bottom: 22px;
+    color: #555;
+}
+#about .about_wrap .about_content .skills .skill_list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px 60px;
+}
+#about .about_wrap .about_content .skills .skill_list .skill_item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+#about .about_wrap .about_content .skills .skill_list .skill_item img {}
+#about .about_wrap .about_content .skills .skill_list .skill_item .dots {
+    display: flex;
+    gap: 6px;
+}
+#about .about_wrap .about_content .skills .skill_list .skill_item .dots span {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    background: transparent;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+#about .about_wrap .about_content .skills .skill_list .skill_item .dots span.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+#about .about_wrap .about_content .skills .skill_list .skill_item .dots span.on {background: #000;}
+#about .about_wrap .about_content .skills .skill_list .skill_item .dots span.on.show {background: #000;}
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================= PROJECT SECTION ================= */
+#alo {}
+#alo .project_section {}
+#alo .project_section .project_inner {}
+#alo .project_section .project_inner .project_left {}
+#alo .project_section .project_inner .project_left .about_nav {}
+#alo .project_section .project_inner .project_left .about_nav {}
+#alo .project_section .project_inner .project_left .about_nav li {}
+#alo .project_section .project_inner .project_left .about_nav li .font {}
+#alo .project_section .project_inner .project_left .project_title {}
+#alo .project_section .project_inner .project_left .project_kor {}
+#alo .project_section .project_inner .project_left .project_desc {}
+#alo .project_section .project_inner .project_left .project_desc .label {}
+#alo .project_section .project_inner .project_left .project_info {}
+#alo .project_section .project_inner .project_left .project_info p {}
+#alo .project_section .project_inner .project_left .project_info p .eng_title {}
+#alo .project_section .project_inner .project_left .project_link {}
+#alo .project_section .project_inner .project_left .project_link a {}
+#alo .project_section .project_inner .project_left .project_tools {}
+#alo .project_section .project_inner .project_left .project_tools .label {}
+#alo .project_section .project_inner .project_left .project_tools .tool_icons {}
+#alo .project_section .project_inner .project_left .project_tools .tool_icons img {}
