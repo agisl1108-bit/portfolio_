@@ -10,7 +10,7 @@
     <script src="./scripts/index.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Prociono&family=PT+Serif+Caption&display=swap" rel="stylesheet">
 <body>
-    <section class="hero">
+    <section id="hero" class="section active">
         <img src="./img/point1.png" alt="" class="bg_mark">
         <img src="./img/point2.png" alt="" class="tag">
         <p class="eng_title sub">You are invited to explore the works of Eun Kyung Hwang</p>
@@ -25,7 +25,7 @@
             <li><a href="#" data-target="visual" class="font">04 Visual Works</a></li>
         </ul>
     </nav>
-    <section id="about">
+    <section id="about" class="section">
         <div class="about_header">
             <div class="header_left">
                 <h2 class="eng_title">ABOUT ME</h2>
@@ -171,7 +171,7 @@
             </div>
         </div>
     </section>
-    <section id="alo" class="project_section">
+    <section id="alo" class="section project_section">
         <div class="project_inner">
             <!-- 좌측 -->
             <div class="project_left">
@@ -183,7 +183,7 @@
                 </ul>
                 <h1 class="project_title eng_title">PROJECT</h1>
                 <h2 class="project_kor">일상의 움직임을 디자인하다</h2>
-                <h3 class="project_eng">DESIGNED FOR<br>EVERYDAY MOVEMENT</h3>
+                <h3 class="project_eng eng_title">DESIGNED FOR<br>EVERYDAY MOVEMENT</h3>
                 <div class="project_desc">
                     <p class="label eng_title">Concept</p>
                     <p>
@@ -217,7 +217,144 @@
             </div>
         </div>
     </section>
-    <section id="aesop"></section>
-    <section id="visual"></section>
+    <section id="aesop" class="section">
+        <div class="project_inner">
+        <!-- 좌측 -->
+        <div class="project_left">
+            <ul class="about_nav">
+                <li><a href="#" data-target="about" class="font">01 About Me</a></li>
+                <li><a href="#" data-target="alo" class="font">02 ALO Redesign</a></li>
+                <li><a href="#" data-target="aesop" class="active font">03 Aesop Redesign</a></li>
+                <li><a href="#" data-target="visual" class="font">04 Visual Works</a></li>
+            </ul>
+            <h1 class="project_title eng_title">PROJECT</h1>
+            <h2 class="project_kor">감각을 경험하다</h2>
+            <h3 class="project_eng eng_title">SENSORY EXPERIENCE,<br>REDEFINED</h3>
+            <div class="project_desc">
+                <p class="label eng_title">Concept</p>
+                <p>
+                    브랜드의 제품을 전달하는 것을 넘어,<br>
+                    감각적인 경험을 중심으로 웹 구조를 설계했습니다.<br>
+                    Aesop 특유의 절제된 미니멀리즘과 깊이 있는 무드를 유지하면서,<br>
+                    사용자가 자연스럽게 콘텐츠를 탐색하고 몰입할 수 있도록 흐름을 재구성했습니다.<br>
+                    이미지와 여백, 타이포그래피의 균형을 통해 브랜드의 분위기를 강조하고, 정보 전달<br>
+                    보다 감각과 경험이 먼저 전달되는 인터페이스를 목표로 디자인했습니다.
+                </p>
+            </div>
+            <div class="project_info">
+                <p><span class="eng_title">Role</span> UI/UX Design</p>
+                <p><span class="eng_title">Participant</span> 100% Personal</p>
+                <p><span class="eng_title">Period</span> 2026.03.26 - 2026.04.12</p>
+                <p><span class="eng_title">Type</span> Website Redesign</p>
+            </div>
+            <div class="project_link">
+                <a href="#">View Prototype<img src="./img/arrow.png" alt=""></a>
+                <a href="#">Live Site<img src="./img/arrow.png" alt=""></a>
+                <a href="#">Original Site<img src="./img/arrow.png" alt=""></a>
+            </div>
+            <div class="project_tools">
+                <p class="label eng_title">Tools</p>
+                <div class="tool_icons">
+                    <img src="./img/fi.png" alt="figma">
+                    <img src="./img/ps.png" alt="photoshop">
+                    <img src="./img/html.png" alt="html">
+                    <img src="./img/css.png" alt="css">
+                    <img src="./img/js.png" alt="js">
+                </div>
+            </div>
+        </div>
+        <!-- 우측 -->
+            <div class="project_right">
+                <img src="./img/background_image2.jpg" alt="Aesop Mockup">
+            </div>
+        </div>
+    </section>
+    <section id="visual" class="section">
+        <div class="project_inner">
+        <!-- 좌측 -->
+        <div class="project_left">
+            <ul class="about_nav">
+                <li><a href="#" data-target="about" class="font">01 About Me</a></li>
+                <li><a href="#" data-target="alo" class="font">02 ALO Redesign</a></li>
+                <li><a href="#" data-target="aesop" class="font">03 Aesop Redesign</a></li>
+                <li><a href="#" data-target="visual" class="active font">04 Visual Works</a></li>
+                <li><a href="#" data-target="visual_archive" class="active font"></a></li>
+            </ul>
+            <h1 class="project_title eng_title">Visual Archive</h1>
+            <h2 class="project_kor">시각을 설계하다</h2>
+            <h3 class="project_eng eng_title">VISUAL STORYTELLING ARCHIVE</h3>
+            <div class="project_desc">
+                <p class="label eng_title">Concept</p>
+                <p>
+                    브랜드와 상황에 맞는 시각적 메시지를 효과적으로 전달하기 위해 다양한 일러스트<br>
+                    작업을 진행했습니다. 프로모션, 시즌 콘텐츠, 일상 장면 등을 주제로<br>
+                    단순한 이미지 제작을 넘어, 색감과 구도, 캐릭터 표현을 통해 스토리와<br>
+                    감정이 각 목적과 분위기에 맞는 비주얼을 설계했습니다. 자연스럽게 전달되도록 구성했으며,<br>
+                    사용자가 직관적으로 이해하고 공감할 수 있는 시각 경험을 만드는 데 중점을 두었습니다<br>
+                </p>
+            </div>
+            <div class="project_info">
+                <p><span class="eng_title">Role</span> Visual Design / Illustration</p>
+                <p><span class="eng_title">Participant</span> 100% Personal</p>
+                <p><span class="eng_title">Period</span> 2026 ~</p>
+                <p><span class="eng_title">Type</span> Visual Artwork Collection</p>
+            </div>
+            <div class="project_link">
+                <a href="#">View Prototype<img src="./img/arrow.png" alt=""></a>
+            </div>
+            <div class="project_tools">
+                <p class="label eng_title">Tools</p>
+                <div class="tool_icons">
+                    <img src="./img/ps.png" alt="photoshop">
+                    <img src="./img/ai.png" alt="Adobe Illustrator">
+                    <img src="./img/procreate.png" alt="css">
+                    <img src="./img/clip_studio_paint.png" alt="CLIP STUDIO PAINT">
+                </div>
+            </div>
+        </div>
+        <!-- 우측 -->
+            <div class="project_right">
+                <img src="./img/background_image3.jpg" alt="Visual Archive">
+            </div>
+        </div>
+    </section>
+    <section id="visual_archive" class="section">
+        <div class="archive_inner">
+            <ul class="about_nav">
+                <li><a href="#" data-target="about" class="font">01 About Me</a></li>
+                <li><a href="#" data-target="alo" class="font">02 ALO Redesign</a></li>
+                <li><a href="#" data-target="aesop" class="font">03 Aesop Redesign</a></li>
+                <li><a href="#" data-target="visual" class="active font">04 Visual Works</a></li>
+            </ul>
+            <div class="archive_title">
+                <h2 class="eng_title">Visual Archive</h2>
+                <h3>시각을 설계하다</h3>
+                <p class="eng_title">VISUAL STORYTELLING ARCHIVE</p>
+            </div>
+        </div>
+        <div class="archive_slider">
+            <div class="archive_track">
+                <div class="track track1">
+                    <img src="./img/design_image.jpg" alt="" class="archive_item">
+                    <img src="./img/design_image1.jpg" alt="" class="archive_item">
+                    <img src="./img/design_image2.jpg" alt="" class="archive_item">
+                    <img src="./img/design_image3.jpg" alt="" class="archive_item">
+                    <img src="./img/design_image4.jpg" alt="" class="archive_item">
+                    <img src="./img/design_image5.jpg" alt="" class="archive_item">
+                    <img src="./img/design_image6.jpg" alt="" class="archive_item">
+                </div>
+                <div class="track track2">
+                    <img src="./img/design_image7.jpg" alt="" class="archive_item">
+                    <img src="./img/design_image8.jpg" alt="" class="archive_item">
+                    <img src="./img/design_image9.jpg" alt="" class="archive_item">
+                    <img src="./img/design_image10.jpg" alt="" class="archive_item">
+                    <img src="./img/design_image11.jpg" alt="" class="archive_item">
+                </div>
+            </div>
+        <!-- 확대 모달 -->
+        <div class="modal">
+            <img src="" alt="">
+        </div>
+    </section>
 </body>
 </html>

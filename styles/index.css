@@ -1,9 +1,11 @@
 body {
     margin: 0;
     background: #F5F1EA;
+    scroll-snap-type: y proximity;
+    overflow-y: scroll;
 }
 /* ================= HERO ================= */
-.hero {
+#hero {
     position: relative;
     height: 92vh;
     display: flex;
@@ -11,18 +13,18 @@ body {
     text-align: center;
     overflow: hidden;
 }
-.hero .bg_mark {
+#hero .bg_mark {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     width: 560px;;
     z-index: 0;
 }
-.hero *:not(.bg_mark):not(.tag) {
+#hero *:not(.bg_mark):not(.tag) {
     position: relative;
     z-index: 1;
 }
-.hero .tag {
+#hero .tag {
     position: absolute;
     top: -10px; right: 55px;
     width: 10%;
@@ -32,18 +34,18 @@ body {
     filter: drop-shadow(0 8px 10px rgba(0,0,0,0.15));
     animation: swing 3s ease-in-out infinite;
 }
-.hero .sub {
+#hero .sub {
     font-size: 1.75rem;
     color: #333;
     margin-bottom: 80px ;
 }
-.hero h1 {
+#hero h1 {
     font-family: 'Great Vibes', cursive;
     font-size: 12.50rem;
     color: #A52725;
     margin-top: 30px;
 }
-.hero .desc {
+#hero .desc {
     font-size: 2.00rem;
     color: #333;
     margin-top: 50px;
@@ -247,7 +249,7 @@ nav ul li .font:hover::after {width: 100%;}
     transform: translateY(0);
 }
 #about .about_wrap .about_content .skills .skill_list .skill_item .dots span.on {background: #000;}
-#about .about_wrap .about_content .skills .skill_list .skill_item .dots span.on.show {background: #000;}
+#about .about_wrap .about_content .skills .skill_list .skill_item .dots span.on.show {background: #000; opacity: 1;}
 .reveal {
     opacity: 0;
     transform: translateY(40px);
@@ -259,24 +261,597 @@ nav ul li .font:hover::after {width: 100%;}
 }
 
 /* ================= PROJECT SECTION ================= */
-#alo {}
-#alo .project_section {}
-#alo .project_section .project_inner {}
-#alo .project_section .project_inner .project_left {}
-#alo .project_section .project_inner .project_left .about_nav {}
-#alo .project_section .project_inner .project_left .about_nav {}
-#alo .project_section .project_inner .project_left .about_nav li {}
-#alo .project_section .project_inner .project_left .about_nav li .font {}
-#alo .project_section .project_inner .project_left .project_title {}
-#alo .project_section .project_inner .project_left .project_kor {}
-#alo .project_section .project_inner .project_left .project_desc {}
-#alo .project_section .project_inner .project_left .project_desc .label {}
-#alo .project_section .project_inner .project_left .project_info {}
-#alo .project_section .project_inner .project_left .project_info p {}
-#alo .project_section .project_inner .project_left .project_info p .eng_title {}
-#alo .project_section .project_inner .project_left .project_link {}
-#alo .project_section .project_inner .project_left .project_link a {}
-#alo .project_section .project_inner .project_left .project_tools {}
-#alo .project_section .project_inner .project_left .project_tools .label {}
-#alo .project_section .project_inner .project_left .project_tools .tool_icons {}
-#alo .project_section .project_inner .project_left .project_tools .tool_icons img {}
+#alo.project_section {
+    width: 100%;
+    height: 100vh;
+    padding: 80px 120px 60px;
+    background: #F5F1EA;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+/* === 전체 레이아웃 === */
+#alo.project_section .project_inner {
+    display: grid;
+    grid-template-columns: 520px 1fr;
+    align-items: center;
+    gap: 80px;
+}
+#alo.project_section .project_inner .project_left {
+    display: flex;
+    flex-direction: column;
+}
+#alo.project_section .project_inner .project_left .about_nav {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 18px;
+    margin-bottom: 30px;
+}
+#alo.project_section .project_inner .project_left .about_nav li {}
+#alo.project_section .project_inner .project_left .about_nav li .font {
+    position: relative;
+    color: #D0A09F;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+#alo.project_section .project_inner .project_left .about_nav li .font::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0; height: 1px;
+    background: #A52725;
+    transition: width 0.3s ease;
+}
+#alo.project_section .project_inner .project_left .about_nav li .font:hover {color: #A52725;}
+#alo.project_section .project_inner .project_left .about_nav li .font:hover::after {width: 100%;}
+#alo.project_section .project_inner .project_left .about_nav li .font.active {color: #A52725;}
+#alo.project_section .project_inner .project_left .project_title {
+    font-size: 2.25rem;
+    color: #A52725;
+    margin-bottom: 22px;
+}
+#alo.project_section .project_inner .project_left .project_kor {
+    font-size: 2.00rem;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+#alo.project_section .project_inner .project_left .project_eng {
+    font-size: 2.00rem;
+    color: #333;
+    margin-bottom: 42px;
+}
+#alo.project_section .project_inner .project_left .project_desc {}
+#alo.project_section .project_inner .project_left .project_desc .label {
+    color: #333;
+    font-size: 1.38rem;
+    margin-bottom: 12px;
+}
+#alo.project_section .project_inner .project_left .project_desc p {
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 42px;
+}
+#alo.project_section .project_inner .project_left .project_info {margin-bottom: 42px;}
+#alo.project_section .project_inner .project_left .project_info .eng_title {
+    font-size: 1.38rem;
+    color: #333;
+    display: inline-block;
+    width: 120px;
+}
+#alo.project_section .project_inner .project_left .project_info p {
+    margin-bottom: 8px;
+    color: #555;
+}
+#alo.project_section .project_inner .project_left .project_link {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+#alo.project_section .project_inner .project_left .project_link a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+    font-size: 1.13rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+#alo.project_section .project_inner .project_left .project_link a:hover {color: #111;}
+#alo.project_section .project_inner .project_left .project_link a img {transition: transform 0.3s ease;}
+#alo.project_section .project_inner .project_left .project_link a:hover img {transform: translateX(6px);}
+#alo.project_section .project_inner .project_left .project_tools {}
+#alo.project_section .project_inner .project_left .project_tools .label {
+    font-size: 1.38rem;
+    color: #333;
+    margin-bottom: 18px;
+}
+#alo.project_section .project_inner .project_left .project_tools .tool_icons {
+    display: flex;
+    gap: 12px;
+}
+#alo.project_section .project_inner .project_left .project_tools .tool_icons img {
+    width: 40px; height: 40px;
+}
+#alo.project_section .project_inner .project_right {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: -120px;
+}
+#alo.project_section .project_inner .project_right img {
+    width: 90%;
+    max-width: none;
+}
+
+/* ================= AESOP PROJECT ================= */
+#aesop.section {
+    width: 100%;
+    height: 100vh;
+    padding: 80px 120px 60px;
+    background: #F5F1EA;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* ===== 전체 레이아웃 ===== */
+#aesop.section .project_inner {
+    display: grid;
+    grid-template-columns: 520px 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+/* ===== 좌측 ===== */
+#aesop.section .project_inner .project_left {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== nav ===== */
+#aesop.section .project_inner .project_left .about_nav {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+#aesop.section .project_inner .project_left .about_nav li {}
+
+#aesop.section .project_inner .project_left .about_nav li .font {
+    position: relative;
+    color: #D0A09F;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+#aesop.section .project_inner .project_left .about_nav li .font::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 1px;
+    background: #A52725;
+    transition: width 0.3s ease;
+}
+
+#aesop.section .project_inner .project_left .about_nav li .font:hover {
+    color: #A52725;
+}
+
+#aesop.section .project_inner .project_left .about_nav li .font:hover::after {
+    width: 100%;
+}
+
+#aesop.section .project_inner .project_left .about_nav li .font.active {
+    color: #A52725;
+}
+
+/* ===== 타이틀 ===== */
+#aesop.section .project_inner .project_left .project_title {
+    font-size: 2.25rem;
+    color: #A52725;
+    margin-bottom: 22px;
+}
+
+#aesop.section .project_inner .project_left .project_kor {
+    font-size: 2.00rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+#aesop.section .project_inner .project_left .project_eng {
+    font-size: 2.00rem;
+    color: #333;
+    margin-bottom: 42px;
+}
+
+/* ===== 설명 ===== */
+#aesop.section .project_inner .project_left .project_desc {}
+
+#aesop.section .project_inner .project_left .project_desc .label {
+    font-size: 1.38rem;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+#aesop.section .project_inner .project_left .project_desc p {
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 42px;
+}
+
+/* ===== 정보 ===== */
+#aesop.section .project_inner .project_left .project_info {
+    margin-bottom: 42px;
+}
+
+#aesop.section .project_inner .project_left .project_info p {
+    margin-bottom: 8px;
+    color: #555;
+}
+
+#aesop.section .project_inner .project_left .project_info p .eng_title {
+    display: inline-block;
+    width: 110px;
+    font-size: 1.38rem;
+    color: #333;
+}
+
+/* ===== 링크 ===== */
+#aesop.section .project_inner .project_left .project_link {
+    display: flex;
+    gap: 26px;
+    margin-bottom: 50px;
+}
+
+#aesop.section .project_inner .project_left .project_link a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1.13rem;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+/* hover */
+#aesop.section .project_inner .project_left .project_link a:hover {
+    color: #111;
+}
+
+#aesop.section .project_inner .project_left .project_link a img {
+    transition: transform 0.3s ease;
+}
+
+#aesop.section .project_inner .project_left .project_link a:hover img {
+    transform: translateX(6px);
+}
+
+/* ===== tools ===== */
+#aesop.section .project_inner .project_left .project_tools {}
+
+#aesop.section .project_inner .project_left .project_tools .label {
+    font-size: 1.38rem;
+    margin-bottom: 16px;
+    color: #333;
+}
+
+#aesop.section .project_inner .project_left .project_tools .tool_icons {
+    display: flex;
+    gap: 12px;
+}
+
+#aesop.section .project_inner .project_left .project_tools .tool_icons img {
+    width: 42px;
+    height: 42px;
+}
+
+/* ===== 오른쪽 이미지 ===== */
+#aesop.section .project_inner .project_right {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: -120px;
+}
+
+#aesop.section .project_inner .project_right img {
+    width: 90%;
+    max-width: none;
+    object-fit: cover;
+}
+
+/* ================= visual ================= */
+#visual.section {
+    width: 100%;
+    height: 100vh;
+    padding: 80px 120px 60px;
+    background: #F5F1EA;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* ===== 전체 레이아웃 ===== */
+#visual.section .project_inner {
+    display: grid;
+    grid-template-columns: 520px 1fr;
+    align-items: center;
+    gap: 80px;
+}
+
+/* ===== 좌측 ===== */
+#visual.section .project_inner .project_left {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== nav ===== */
+#visual.section .project_inner .project_left .about_nav {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+#visual.section .project_inner .project_left .about_nav li {}
+
+#visual.section .project_inner .project_left .about_nav li .font {
+    position: relative;
+    color: #D0A09F;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+#visual.section .project_inner .project_left .about_nav li .font::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 1px;
+    background: #A52725;
+    transition: width 0.3s ease;
+}
+
+#visual.section .project_inner .project_left .about_nav li .font:hover {
+    color: #A52725;
+}
+
+#visual.section .project_inner .project_left .about_nav li .font:hover::after {
+    width: 100%;
+}
+
+#visual.section .project_inner .project_left .about_nav li .font.active {
+    color: #A52725;
+}
+
+/* ===== 타이틀 ===== */
+#visual.section .project_inner .project_left .project_title {
+    font-size: 2.25rem;
+    color: #A52725;
+    margin-bottom: 22px;
+}
+
+#visual.section .project_inner .project_left .project_kor {
+    font-size: 2.00rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+#visual.section .project_inner .project_left .project_eng {
+    font-size: 2.00rem;
+    color: #333;
+    margin-bottom: 42px;
+}
+
+/* ===== 설명 ===== */
+#visual.section .project_inner .project_left .project_desc {}
+
+#visual.section .project_inner .project_left .project_desc .label {
+    font-size: 1.38rem;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+#visual.section .project_inner .project_left .project_desc p {
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 42px;
+}
+
+/* ===== 정보 ===== */
+#visual.section .project_inner .project_left .project_info {
+    margin-bottom: 42px;
+}
+
+#visual.section .project_inner .project_left .project_info p {
+    margin-bottom: 8px;
+    color: #555;
+}
+
+#visual.section .project_inner .project_left .project_info p .eng_title {
+    display: inline-block;
+    width: 110px;
+    font-size: 1.38rem;
+    color: #333;
+}
+
+/* ===== 링크 ===== */
+#visual.section .project_inner .project_left .project_link {
+    display: flex;
+    gap: 26px;
+    margin-bottom: 50px;
+}
+
+#visual.section .project_inner .project_left .project_link a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1.13rem;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+/* hover */
+#visual.section .project_inner .project_left .project_link a:hover {
+    color: #111;
+}
+
+#visual.section .project_inner .project_left .project_link a img {
+    transition: transform 0.3s ease;
+}
+
+#visual.section .project_inner .project_left .project_link a:hover img {
+    transform: translateX(6px);
+}
+
+/* ===== tools ===== */
+#visual.section .project_inner .project_left .project_tools {}
+
+#visual.section .project_inner .project_left .project_tools .label {
+    font-size: 1.38rem;
+    margin-bottom: 16px;
+    color: #333;
+}
+
+#visual.section .project_inner .project_left .project_tools .tool_icons {
+    display: flex;
+    gap: 12px;
+}
+
+#visual.section .project_inner .project_left .project_tools .tool_icons img {
+    width: 42px;
+    height: 42px;
+}
+
+/* ===== 오른쪽 이미지 ===== */
+#visual.section .project_inner .project_right {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: -120px;
+}
+
+#visual.section .project_inner .project_right img {
+    width: 90%;
+    max-width: none;
+    object-fit: cover;
+}
+
+/* ================= VISUAL ARCHIVE ================= */
+#visual_archive.section {
+    width: 100%;
+    height: 100vh;
+    padding: 80px 120px;
+    background: #F5F1EA;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* ===== 상단 ===== */
+.archive_inner {
+    margin-bottom: 40px;
+}
+/* nav */
+.archive_inner .about_nav {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 30px;
+}
+.archive_inner .about_nav .font {
+    color: #D0A09F;
+    text-decoration: none;
+    position: relative;
+}
+.archive_inner .about_nav .font.active {
+    color: #A52725;
+}
+/* 제목 */
+.archive_title h2 {
+    color: #A52725;
+    margin-bottom: 10px;
+}
+.archive_title h3 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+.archive_title p {
+    font-size: 1.2rem;
+}
+/* ===== 슬라이더 ===== */
+.archive_slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+/* 트랙 */
+.archive_track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 700px;
+    animation: slide 25s linear infinite;
+}
+/* 이미지 카드 */
+.archive_item {
+    width: 260px;
+    height: 340px;
+    object-fit: cover;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+/* ===== hover 시 슬라이드 멈춤 ===== */
+.archive_slider:hover .archive_track {
+    animation-play-state: paused;
+}
+/* ===== hover 흔들림 ===== */
+.archive_item:hover {
+    animation: wiggle 0.5s ease infinite;
+}
+/* ===== 슬라이드 애니메이션 ===== */
+@keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+/* ===== 흔들림 ===== */
+@keyframes wiggle {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-2px); }
+    100% { transform: translateX(0); }
+}
+/* ===== 모달 ===== */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 999;
+}
+.modal img {
+    max-width: 80%;
+    max-height: 80%;
+}
+.modal.active {
+    opacity: 1;
+    pointer-events: all;
+}

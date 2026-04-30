@@ -1,3 +1,14 @@
 /* ================== 공통 글꼴 ================== */
 .eng_title {font-family: 'Prociono', serif; line-height: 1.4;}
 .font {font-family: 'PT Serif Caption', serif;}
+/* ================== 공통 레이아웃 ================== */
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+.section {
+    padding: 80px 120px;
+    height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
