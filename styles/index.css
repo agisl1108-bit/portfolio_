@@ -90,17 +90,17 @@ nav ul li .font:hover::after {width: 100%;}
 /* ================= 자기소개 ================= */
 #about {
     min-height: 100vh;
-    padding: 0 120px;
+    padding: 50px 120px;
     background: #F5F1EA;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
 /* ===== 헤더 ===== */
 #about .about_header {
     display: flex;
     justify-content: space-between; 
-    align-items: flex-start;
+    align-items: center;
 }
 #about .about_header .header_left  {
     display: flex; 
@@ -140,7 +140,7 @@ nav ul li .font:hover::after {width: 100%;}
 #about .about_header .header_right p {
     font-size: 2.00rem;
     color: #333;
-    line-height: 1.8;
+    line-height: 1.4;
 }
 #about .about_header .header_right strong {font-weight: 600;}
 /* ===== 레이아웃 ===== */
@@ -173,6 +173,23 @@ nav ul li .font:hover::after {width: 100%;}
     line-height: 1.6;
     margin: 2px 0;
 }
+#about .about_wrap .profile .info a {
+    color: #555;
+    line-height: 1.6;
+    margin: 2px 0;
+    position: relative;
+    text-decoration: none;
+}
+#about .about_wrap .profile .info a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -2px;
+    width: 0; height: 1px;
+    background: #333;
+    transition: width 0.3s ease;
+}
+#about .about_wrap .profile .info a:hover {color: #333;}
+#about .about_wrap .profile .info a:hover::after {width: 100%;}
 #about .about_wrap .profile .info:nth-of-type(1) {margin-top: 10px;}
 #about .about_wrap .profile .info:nth-of-type(2) {margin-top: 8px;}
 #about .about_wrap .profile .info:nth-of-type(3) {margin-top: 8px;}
@@ -233,6 +250,7 @@ nav ul li .font:hover::after {width: 100%;}
 #about .about_wrap .about_content .skills .skill_list .skill_item img {}
 #about .about_wrap .about_content .skills .skill_list .skill_item .dots {
     display: flex;
+    align-items: center;
     gap: 6px;
 }
 #about .about_wrap .about_content .skills .skill_list .skill_item .dots span {
@@ -241,12 +259,12 @@ nav ul li .font:hover::after {width: 100%;}
     border: 1px solid #000;
     background: transparent;
     opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.4s ease;
+    transform: scale(0.5);
+    transition: all 0.3s ease;
 }
 #about .about_wrap .about_content .skills .skill_list .skill_item .dots span.show {
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1);
 }
 #about .about_wrap .about_content .skills .skill_list .skill_item .dots span.on {background: #000;}
 #about .about_wrap .about_content .skills .skill_list .skill_item .dots span.on.show {background: #000; opacity: 1;}
@@ -260,6 +278,32 @@ nav ul li .font:hover::after {width: 100%;}
     transform: translateY(0);
 }
 
+.github_link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: all 0.25s ease;
+}
+.github_link span {
+    color: #555;
+    position: relative;
+    text-decoration: none;
+}
+.github_link span::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -2px;
+    width: 0; height: 1px;
+    background: #333;
+    transition: width 0.3s ease;
+}
+.github_link span:hover {
+    color: #333;
+}
+.github_link span:hover::after {width: 100%;}
 /* ================= PROJECT SECTION ================= */
 #alo.project_section {
     width: 100%;
@@ -389,7 +433,7 @@ nav ul li .font:hover::after {width: 100%;}
 /* ================= AESOP PROJECT ================= */
 #aesop.section {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     padding: 80px 120px 60px;
     background: #F5F1EA;
     display: flex;
@@ -570,7 +614,7 @@ nav ul li .font:hover::after {width: 100%;}
 /* ================= visual ================= */
 #visual.section {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     padding: 80px 120px 60px;
     background: #F5F1EA;
     display: flex;
@@ -583,8 +627,8 @@ nav ul li .font:hover::after {width: 100%;}
 #visual.section .project_inner {
     display: grid;
     grid-template-columns: 520px 1fr;
-    align-items: center;
     gap: 80px;
+    align-items: center;
 }
 
 /* ===== 좌측 ===== */
@@ -751,94 +795,133 @@ nav ul li .font:hover::after {width: 100%;}
 /* ================= VISUAL ARCHIVE ================= */
 #visual_archive.section {
     width: 100%;
-    height: 100vh;
-    padding: 80px 120px;
+    /* height: auto; */
+    padding: 60px 120px;
     background: #F5F1EA;
     box-sizing: border-box;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+@media (max-height: 900px) {
+    #visual_archive.section {
+        justify-content: flex-start;
+    }
 }
 
 /* ===== 상단 ===== */
-.archive_inner {
-    margin-bottom: 40px;
-}
-/* nav */
-.archive_inner .about_nav {
+.archive_inner { margin-bottom: 24px; }
+
+.about_nav {
     display: flex;
     gap: 18px;
-    margin-bottom: 30px;
+    margin-bottom: 22px;
 }
-.archive_inner .about_nav .font {
+
+.about_nav .font {
+    position: relative;
+    display: inline-block;
     color: #D0A09F;
     text-decoration: none;
-    position: relative;
 }
-.archive_inner .about_nav .font.active {
+
+.about_nav li .font::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 1px;
+    background: #A52725;
+    transition: width 0.3s ease;
+}
+
+.about_nav li .font:hover {
     color: #A52725;
 }
-/* 제목 */
+
+.about_nav li .font:hover::after {
+    width: 100%;
+}
+.about_nav .font.active {
+    color: #A52725;
+}
+
+/* ===== 타이틀 ===== */
+.archive_title .eng_title {
+    font-size: 2.25rem;
+    color: #A52725;
+    margin-bottom: 32px;
+}
+
 .archive_title h2 {
-    color: #A52725;
-    margin-bottom: 10px;
-}
-.archive_title h3 {
-    font-size: 1.8rem;
+    font-size: 2.00rem;
     margin-bottom: 5px;
 }
-.archive_title p {
-    font-size: 1.2rem;
+
+.archive_title .subtitle {
+    font-size: 2.00rem;
+    margin-bottom: 10px;
 }
+
+.archive_title p {
+    font-weight: 600;
+}
+
 /* ===== 슬라이더 ===== */
 .archive_slider {
-    width: 100%;
     overflow: hidden;
-    position: relative;
 }
-/* 트랙 */
+
+/* 2줄 구조 */
 .archive_track {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* 각 줄 */
+.track {
     display: flex;
     gap: 24px;
     width: max-content;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 700px;
+}
+
+/* 둘 다 같은 방향 */
+.track1 {
     animation: slide 25s linear infinite;
 }
-/* 이미지 카드 */
+
+.track2 {
+    animation: slide 25s linear infinite;
+    animation-delay: -10s;
+}
+
+/* 이미지 */
 .archive_item {
     width: 260px;
     height: 340px;
     object-fit: cover;
-    flex-shrink: 0;
     cursor: pointer;
     transition: transform 0.3s ease;
+    flex: 0 0 auto;
 }
-/* ===== hover 시 슬라이드 멈춤 ===== */
-.archive_slider:hover .archive_track {
-    animation-play-state: paused;
-}
-/* ===== hover 흔들림 ===== */
+
 .archive_item:hover {
-    animation: wiggle 0.5s ease infinite;
+    transform: scale(1.05);
 }
-/* ===== 슬라이드 애니메이션 ===== */
+
+/* 슬라이드 */
 @keyframes slide {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
 }
-/* ===== 흔들림 ===== */
-@keyframes wiggle {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-4px); }
-    50% { transform: translateX(4px); }
-    75% { transform: translateX(-2px); }
-    100% { transform: translateX(0); }
-}
+
 /* ===== 모달 ===== */
 .modal {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.85);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -847,11 +930,42 @@ nav ul li .font:hover::after {width: 100%;}
     transition: 0.3s;
     z-index: 999;
 }
-.modal img {
-    max-width: 80%;
-    max-height: 80%;
-}
+
 .modal.active {
     opacity: 1;
     pointer-events: all;
+}
+
+/* ===== 콘텐츠 ===== */
+.modal_content {
+    position: relative;
+    max-height: 85vh;
+    max-width: 90vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* ===== 이미지 ===== */
+.modal_content img {
+    /* display: block; */
+    margin: 0 auto;
+    max-width: 80vh;
+    height: auto;
+}
+
+/* 세로 긴 이미지 */
+.modal_content img.vertical {
+    max-width: 500px;
+}
+
+/* ===== 안내문 ===== */
+.modal_hint {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    color: #fff;
+    font-size: 0.9rem;
+    white-space: nowrap;
 }

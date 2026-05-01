@@ -1,92 +1,108 @@
-// ===== 클릭 이동 =====
-document.querySelectorAll('a[data-target]').forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.getElementById(this.dataset.target);
-        if (!target) return;
-        window.scrollTo({
-            top: target.offsetTop,
-            behavior: 'smooth'
+window.addEventListener('load', () => {
+
+    /* ===== nav 이동 ===== */
+    document.querySelectorAll('a[data-target]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.getElementById(this.dataset.target);
+            if (!target) return;
+            window.scrollTo({
+                top: target.offsetTop,
+                behavior: 'smooth'
+            });
         });
     });
-});
 
+    /* ===== nav active ===== */
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('a[data-target]');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const top = section.offsetTop - 150;
+            const height = section.offsetHeight;
+            if (window.scrollY >= top && window.scrollY < top + height) {
+                current = section.id;
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.dataset.target === current) {
+                link.classList.add('active');
+            }
+        });
+    });
 
-// ===== nav active 자동 변경 =====
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('a[data-target]');
+    /* ===== 슬라이드 복제 ===== */
+    document.querySelectorAll('.track').forEach(track => {
+    track.innerHTML += track.innerHTML + track.innerHTML;
+    });
+    /* ===== hover 멈춤 ===== */
+    const tracks = document.querySelectorAll('.track');
+    document.querySelectorAll('.archive_item').forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            tracks.forEach(t => t.style.animationPlayState = 'paused');
+        });
+        item.addEventListener('mouseleave', () => {
+            tracks.forEach(t => t.style.animationPlayState = 'running');
+        });
+    });
 
-window.addEventListener('scroll', () => {
-    let current = '';
+    /* ===== 모달 ===== */
+    const modal = document.querySelector('.modal');
+    const modalImg = document.querySelector('.modal_content img');
+    if (!modal || !modalImg) return;
+    document.querySelectorAll('.archive_item').forEach(img => {
+        img.addEventListener('click', () => {
+            modal.classList.add('active');
+            modalImg.src = img.src;
+            document.body.style.overflow = 'hidden';
+            /* 세로 이미지 판별 */
+            const temp = new Image();
+            temp.src = img.src;
+            temp.onload = () => {
+                if (temp.height > temp.width * 1.2) {
+                    modalImg.classList.add('vertical');
+                } else {
+                    modalImg.classList.remove('vertical');
+                }
+            };
+        });
+    });
 
-    sections.forEach(section => {
-        const top = section.offsetTop - 120;
-        const height = section.offsetHeight;
-        if (window.scrollY >= top && window.scrollY < top + height) {
-            current = section.id;
+    /* ===== 모달 닫기 ===== */
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
     });
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.dataset.target === current) {
-            link.classList.add('active');
-        }
-    });
+
 });
-// === reveal 애니메이션 ===
+
+/* ===== reveal 애니메이션 ===== */
 const reveals = document.querySelectorAll('.reveal');
 
-function revealOnScroll() {
-    const trigger = window.innerHeight * 0.85;
-
+const revealOnScroll = () => {
     reveals.forEach(el => {
         const top = el.getBoundingClientRect().top;
-        if (top < trigger) {
+        if (top < window.innerHeight - 100) {
             el.classList.add('active');
         }
     });
-}
-// === 스킬 점 애니메이션 ===
+};
+
 window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('load', revealOnScroll);
 
-const dots = document.querySelectorAll('.dots span');
-let played = false;
+revealOnScroll();
 
-function animateDots() {
-    const skillSection = document.querySelector('.skills');
-    if (!skillSection) return;
+/* ===== 점 애니메이션 ===== */
+document.querySelectorAll('.skill_item').forEach(item => {
+    const dots = item.querySelectorAll('.dots span');
 
-    const trigger = window.innerHeight * 0.8;
-    const top = skillSection.getBoundingClientRect().top;
-
-    if (top < trigger && !played) {
-        dots.forEach(dot => dot.classList.add('show'));
-        played = true;
-    }
-}
-
-window.addEventListener('scroll', animateDots);
-window.addEventListener('load', animateDots);
-
-// ===== 무한 슬라이드 =====
-const track = document.querySelector('.archive_track');
-track.innerHTML += track.innerHTML;
-
-
-// ===== 이미지 클릭 확대 =====
-const items = document.querySelectorAll('.archive_item');
-const modal = document.querySelector('.modal');
-const modalImg = modal.querySelector('img');
-
-items.forEach(img => {
-    img.addEventListener('click', () => {
-        modal.classList.add('active');
-        modalImg.src = img.src;
+    dots.forEach((dot, i) => {
+        setTimeout(() => {
+            dot.classList.add('show');
+        }, i * 120);
     });
-});
-
-// ===== 모달 닫기 =====
-modal.addEventListener('click', () => {
-    modal.classList.remove('active');
 });
