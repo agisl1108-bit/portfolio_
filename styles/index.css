@@ -858,6 +858,7 @@ nav ul li .font:hover::after {width: 100%;}
     font-size: 2.00rem;
     margin-bottom: 5px;
     font-weight: 700;
+    color: #333;
 }
 
 .archive_title .subtitle {
@@ -868,6 +869,7 @@ nav ul li .font:hover::after {width: 100%;}
 
 .archive_title p {
     font-weight: 600;
+    color: #333;
 }
 
 /* ===== 슬라이더 ===== */
