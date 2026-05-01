@@ -974,3 +974,195 @@ nav ul li .font:hover::after {width: 100%;}
     font-size: 0.9rem;
     white-space: nowrap;
 }
+
+/* ===== END ===== */
+.end_section {
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+}
+
+.end_inner {
+    flex: 1; /* 핵심 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 200px;
+    position: relative;
+}
+.end_inner::before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 120px;
+    background: #ddd;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.end_section .about_nav1 {flex-shrink: 0;}
+
+.about_nav1 {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    padding: 20px 0;
+    border-top: 1px solid #e3dcd2;
+    border-bottom: 1px solid #e3dcd2;
+    background: rgba(255,255,255,0.3);
+    backdrop-filter: blur(4px);
+}
+
+.about_nav1 .font {
+    position: relative;
+    color: #C8A8A6;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+}
+.about_nav1 .font:hover {
+    color: #A52725;
+}
+
+/* 초대장 느낌 밑줄 */
+.about_nav1 .font::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    width: 0;
+    height: 1px;
+    background: #A52725;
+    transform: translateX(-50%);
+    transition: 0.3s;
+}
+
+.about_nav1 .font:hover::after {
+    width: 100%;
+}
+
+.about_nav1 .font.active {
+    color: #A52725;
+}
+/* ===== 왼쪽 ===== */
+.end_left .contact {
+    font-size: 1.38rem;
+    margin-bottom: 20px;
+}
+
+.contact_box {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/* QR */
+.contact_box > img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.contact_info {margin-top: 6px;}
+/* 텍스트 영역 */
+.contact_info p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    margin-bottom: 12px;
+    color: #555;
+}
+
+/* 아이콘 */
+.contact_info img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+/* ===== 오른쪽 ===== */
+.end_right {
+    text-align: right;
+    animation: fadeUp 1s ease forwards;
+}
+
+.end_right h2 {
+    font-size: 2.75rem;
+    margin-bottom: 12px;
+}
+
+.end_right p {
+    font-weight: 600;
+    color: #555;
+    line-height: 1.5;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== 맨 위로 스크롤 ===== */
+.top_btn {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    width: 60px;
+    height: 60px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.3s;
+    z-index: 999;
+}
+
+.top_btn.show {
+    opacity: 1;
+}
+
+/* 봉투 몸통 */
+.envelope {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #A52725;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* 봉투 뚜껑 */
+.envelope .flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: #8f1f1d;
+    transform-origin: top;
+    transition: transform 0.4s ease;
+}
+
+/* ✨ hover 효과 */
+.top_btn:hover .flap {
+    transform: rotateX(140deg);
+}
+
+/* 살짝 뜨는 느낌 */
+.top_btn:hover {
+    transform: translateY(-6px);
+}
+
+/* 클릭 시 더 열리는 느낌 */
+.top_btn:active .flap {
+    transform: translateY(-2px) scale(0.95);
+}

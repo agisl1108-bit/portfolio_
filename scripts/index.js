@@ -106,3 +106,23 @@ document.querySelectorAll('.skill_item').forEach(item => {
         }, i * 120);
     });
 });
+
+/* ===== 맨 위로 스크롤 ===== */
+const topBtn = document.querySelector('.top_btn');
+const endSection = document.getElementById('end');
+const firstSection = document.getElementById('hero'); // 🔥 여기 중요
+
+window.addEventListener('scroll', () => {
+    const endTop = endSection.offsetTop;
+    const scrollY = window.scrollY + window.innerHeight;
+
+    if (scrollY >= endTop + 100) {
+        topBtn.classList.add('show');
+    } else {
+        topBtn.classList.remove('show');
+    }
+});
+
+topBtn.addEventListener('click', () => {
+    firstSection.scrollIntoView({ behavior: 'smooth' }); // 🔥 이걸로 바꿔
+});
