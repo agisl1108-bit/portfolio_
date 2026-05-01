@@ -857,11 +857,13 @@ nav ul li .font:hover::after {width: 100%;}
 .archive_title h2 {
     font-size: 2.00rem;
     margin-bottom: 5px;
+    font-weight: 700;
 }
 
 .archive_title .subtitle {
     font-size: 2.00rem;
     margin-bottom: 10px;
+    color: #333;
 }
 
 .archive_title p {
