@@ -48,6 +48,83 @@ window.addEventListener('load', () => {
         });
     });
 
+/* ===== 무한 루프 자연스럽게 ===== */
+document.querySelectorAll('.track').forEach(track => {
+    track.addEventListener('animationiteration', () => {
+        track.style.transition = 'none';
+    });
+});
+
+/* ===== 슬라이드 ===== */
+document.querySelectorAll('.track').forEach((track, index) => {
+
+    let isDragging = false;
+
+    let startX = 0;
+    let prevTranslate = index === 0 ? 0 : -500;
+    let currentTranslate = prevTranslate;
+
+    let autoSpeed = index === 0 ? -1.3 : -1.6;
+
+    /* ===== 자동 슬라이드 ===== */
+    function animate() {
+
+        if (!isDragging) {
+
+            currentTranslate += autoSpeed;
+
+            track.style.transform =
+                `translateX(${currentTranslate}px)`;
+
+            prevTranslate = currentTranslate;
+
+            const trackWidth = track.scrollWidth / 3;
+
+            if (Math.abs(currentTranslate) >= trackWidth) {
+                currentTranslate = 0;
+                prevTranslate = 0;
+            }
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    /* ===== 드래그 시작 ===== */
+    track.addEventListener('mousedown', (e) => {
+
+        isDragging = true;
+
+        startX = e.clientX;
+
+        track.style.cursor = 'grabbing';
+    });
+
+    /* ===== 드래그 중 ===== */
+    window.addEventListener('mousemove', (e) => {
+
+        if (!isDragging) return;
+
+        const currentX = e.clientX;
+
+        const dragMove = currentX - startX;
+
+        currentTranslate = prevTranslate + dragMove;
+
+        track.style.transform =
+            `translateX(${currentTranslate}px)`;
+    });
+
+    /* ===== 드래그 끝 ===== */
+    window.addEventListener('mouseup', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        prevTranslate = currentTranslate;
+        track.style.cursor = 'grab';
+    });
+});
+
     /* ===== 모달 ===== */
     const modal = document.querySelector('.modal');
     const modalImg = document.querySelector('.modal_content img');
