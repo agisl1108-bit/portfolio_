@@ -4,6 +4,7 @@ body {
     scroll-snap-type: y proximity;
     overflow-y: scroll;
 }
+
 /* ================= HERO ================= */
 #hero {
     position: relative;
@@ -62,6 +63,7 @@ nav ul {
     gap: 60px;
     list-style: none;
     padding: 0; margin: 0;
+    text-align: center;
 }
 nav ul li {}
 nav ul li .font {
